@@ -1,0 +1,88 @@
+﻿@model FLEET.Models.Station
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+@*<h1>Create</h1>
+
+    <h4>Station</h4>
+    <hr />*@
+<h2 class=" bg-primary badge-danger">Enter New Station</h2>
+<div>
+    <a asp-action="Index" class="btn btn-outline-warning btn-rounded btn-sm my-0">Back to List</a>
+</div>
+@*<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="StationName" class="control-label"></label>
+                <input asp-for="StationName" class="form-control" />
+                <span asp-validation-for="StationName" class="text-danger"></span>
+            </div>*@
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group row">
+        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-sm">Station Name</label>
+        <div class="col-sm-10">
+            <input asp-for="StationName" class="form-control form-control-sm" id="colFormLabel" placeholder="Station Name">
+            <span asp-validation-for="StationName" class="text-danger"></span>
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            <label asp-for="Location" class="control-label"></label>
+            <input asp-for="Location" class="form-control" />
+            <span asp-validation-for="Location" class="text-danger"></span>
+        </div>*@
+
+    <div class="form-group row">
+        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-sm">Location</label>
+        <div class="col-sm-10">
+            <input asp-for="Location" class="form-control form-control-sm" id="colFormLabel" placeholder="Location">
+            <span asp-validation-for="Location" class="text-danger"></span>
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            <label asp-for="DepartmentId" class="control-label"></label>
+            <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId"></select>
+        </div>*@
+
+        <div class="form-group row">
+            <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-sm">Department Name</label>
+            <div class="col-sm-10">
+                <select asp-for="DepartmentId" class="form-control form-control-sm" id="colFormLabel" asp-items="ViewBag.DepartmentId"></select>
+                @*<span asp-validation-for="InsuranceId" class="text-danger"></span>*@
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                <label asp-for="FleetNumber" class="control-label"></label>
+                <input asp-for="FleetNumber" class="form-control" />
+                <span asp-validation-for="FleetNumber" class="text-danger"></span>
+            </div>*@
+
+        <div class="form-group row">
+            <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-sm">Fleet Number</label>
+            <div class="col-sm-10">
+                <input asp-for="FleetNumber" class="form-control form-control-sm" id="colFormLabel" placeholder="Fleet Number">
+                <span asp-validation-for="FleetNumber" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+    @*</div>
+    </div>*@
+
+    @*<div>
+        <a asp-action="Index">Back to List</a>
+    </div>*@
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

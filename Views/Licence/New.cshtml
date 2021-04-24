@@ -1,0 +1,122 @@
+﻿ @model FLEET.ViewModels.LicenceViewModel
+
+@{
+    ViewData["Title"] = "New";
+}
+
+<div class="col-md-10 mx-auto py-4">
+    <div class="card">
+        <div class="card-header bg-warning text-uppercase text-white">
+            <h4>Add New </h4>
+        </div>
+        <div class="card-body">
+            <form enctype="multipart/form-data" asp-action="New">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="EmployeeNumber" class="control-label"></label>
+                            <input asp-for="EmployeeNumber" class="form-control" />
+                            <span asp-validation-for="EmployeeNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="EmployeeName" class="control-label"></label>
+                            <input asp-for="EmployeeName" class="form-control" />
+                            <span asp-validation-for="EmployeeName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="LicenceNumber" class="control-label"></label>
+                            <input asp-for="LicenceNumber" class="form-control" />
+                            <span asp-validation-for="LicenceNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="IssuedDate" class="control-label"></label>
+                            <input asp-for="IssuedDate" class="form-control" />
+                            <span asp-validation-for="IssuedDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ExpiredDate" class="control-label"></label>
+                            <input asp-for="ExpiredDate" class="form-control" />
+                            <span asp-validation-for="ExpiredDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="RenewedDate" class="control-label"></label>
+                            <input asp-for="RenewedDate" class="form-control" />
+                            <span asp-validation-for="RenewedDate" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Department" class="control-label"></label>
+                            <input asp-for="Department" class="form-control" />
+                            <span asp-validation-for="Department" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ProfileImage" class="control-label"></label>
+                            <div class="custom-file">
+                                <input asp-for="ProfileImage" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                            <span asp-validation-for="ProfileImage" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+                @*<div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="ProfilePicture" class="control-label"></label>
+                    <div class="custom-file">
+                        <input asp-for="ProfilePicture" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                    <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                </div>
+            </div>
+        </div>*@
+                <div class="row">
+                    <div class="form-group">
+                        <input type="submit" value="submit" class="btn btn-sm btn-primary rounded-0 text-uppercase" />
+                        <a asp-action="Index" class="btn btn-sm btn-outline-primary rounded-0 text-uppercase"><i class="fas fa-fast-backward"></i> Back to List</a>
+                    </div>
+
+                </div>
+            </form>
+    </div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+}

@@ -1,0 +1,42 @@
+﻿@model FLEET.Models.COF
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>COF</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.COFNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.COFNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Issued)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Issued)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Expired)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Expired)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Remarks)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Remarks)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.COFId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

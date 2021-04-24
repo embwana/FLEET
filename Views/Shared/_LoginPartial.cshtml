@@ -1,0 +1,150 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> @User.Identity.Name!</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
+        </li>
+        <li class="nav-item dropdown nav navbar-dark">
+            <a class="btn btn-outline-dark nav-link  bg-warning text-black-50 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                MENU ONE
+            </a>
+            <div class="dropdown-menu alert-warning" aria-labelledby="navbarDropdown">
+                @*<a class="dropdown-item alert-success" href="PoolVehicle1"> Pools</a>*@
+                <a class="dropdown-item alert-success " href="Role"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Role</h4></a>
+                <a class="dropdown-item alert-success" href="Licence"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Licence</h4> </a>
+                <a class="dropdown-item alert-success" href="Stations"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Stations</h4></a>
+                <a class="dropdown-item alert-success" href="COFs"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">COFs</h4></a>
+                <a class="dropdown-item alert-success" href="Departments"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Departments</h4></a>
+            </div>
+        </li>
+        <li class="nav-item dropdown nav navbar-dark">
+            <a class="btn btn-outline-dark nav-link bg-warning dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                MENU TWO
+            </a>
+            <div class="dropdown-menu alert-warning " aria-labelledby="navbarDropdown">
+                @*<a class="dropdown-item alert-success" href="PoolVehicle1"> Pools</a>*@
+                <a class="dropdown-item alert-success " href="Groundeds"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Grounded</h4></a>
+                <a class="dropdown-item alert-success" href="FleetCategories"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Fleet Category</h4> </a>
+                <a class="dropdown-item alert-success" href="InsuranceProviders"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Insurance Provider</h4></a>
+                <a class="dropdown-item alert-success" href="Insurances"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Insurance</h4></a>
+                <a class="dropdown-item alert-success" href="FleetSizes"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">FleetSizes</h4></a>
+            </div>
+        </li>
+
+
+
+    }
+    else
+
+    {
+
+        <li class="nav-item">
+
+            <a class="dropdown-item" nav-link text-warning" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            @*<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
+        </li>
+
+        @*<li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Role</a>
+            </li>*@
+
+
+
+    }
+    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Manager"))
+    {
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> @User.Identity.Name!</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
+        </li>
+
+        <li class="nav-item dropdown nav navbar-dark">
+            <a class="btn btn-outline-dark nav-link bg-warning dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                MENU
+            </a>
+            <div class="dropdown-menu alert-warning " aria-labelledby="navbarDropdown">
+                @*<a class="dropdown-item alert-success" href="PoolVehicle1"> Pools</a>*@
+                <a class="dropdown-item alert-success " href="Groundeds"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Grounded</h4></a>
+                <a class="dropdown-item alert-success" href="FleetCategories"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Fleet Category</h4> </a>
+                <a class="dropdown-item alert-success" href="Departments"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Department</h4></a>
+                <a class="dropdown-item alert-success" href="Insurances"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Insurance</h4></a>
+                <a class="dropdown-item alert-success" href="FleetSizes"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">FleetSizes</h4></a>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown nav navbar-dark">
+            <a class="btn btn-outline-dark nav-link bg-warning dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                MENU TWO
+            </a>
+            <div class="dropdown-menu alert-warning " aria-labelledby="navbarDropdown">
+                @*<a class="dropdown-item alert-success" href="PoolVehicle1"> Pools</a>*@
+                <a class="dropdown-item alert-success " href="Licence"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Licence</h4></a>
+                <a class="dropdown-item alert-success" href="COFs"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">COF</h4> </a>
+                <a class="dropdown-item alert-success" href="FleetCustodians"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Department</h4></a>
+                <a class="dropdown-item alert-success" href="Stations"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Station</h4></a>
+                <a class="dropdown-item alert-success" href="Grounded"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Grounded</h4></a>
+            </div>
+        </li>
+
+
+    }
+
+
+
+    @if (SignInManager.IsSignedIn(User) && User.IsInRole("User"))
+    {
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> @User.Identity.Name!</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
+        </li>
+
+        <li class="nav-item dropdown nav navbar-dark">
+            <a class="btn btn-outline-dark nav-link bg-warning dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                USER MENU
+            </a>
+            <div class="dropdown-menu alert-warning " aria-labelledby="navbarDropdown">
+                @*<a class="dropdown-item alert-success" href="PoolVehicle1"> Pools</a>*@
+                <a class="dropdown-item alert-success " href="Groundeds"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Grounded</h4></a>
+                @*<a class="dropdown-item alert-success" href="FleetCategories"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0"></h4> </a>
+                <a class="dropdown-item alert-success" href="Departments"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Department</h4></a>
+                <a class="dropdown-item alert-success" href="Insurances"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">Insurance</h4></a>
+                <a class="dropdown-item alert-success" href="FleetSizes"><h4 class="btn btn-outline-success btn-rounded btn-sm my-0">FleetSizes</h4></a>*@
+            </div>
+        </li>
+
+
+
+
+    }
+
+
+</ul>
+    <ul>
+    </ul>

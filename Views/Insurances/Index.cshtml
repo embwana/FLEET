@@ -1,0 +1,105 @@
+﻿@*@model IEnumerable<FLEET.Models.Insurance>*@
+@model PaginatedList<FLEET.Models.Insurance>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="badge-secondary">LIST OF INSURANCES</h1>
+
+<p>
+    <a asp-action="Create" class="bg-warning btn-outline-dark btn-sm my-0">Enter New Insurance</a>
+</p>
+
+@*<p>
+        <a class="badge-dark" asp-action="Create">Create New</a>
+    </p>*@
+@*<table class="table">*@
+@*<table class="table table-sm d-xl-table-row">*@
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by Insurance Number: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="bg-warning btn btn-outline-primary sm" /> |
+            @*<a asp-action="Index" class="bg-warning btn btn-outline-primary sm">Back to Full List</a>*@
+        </p>
+    </div>
+</form>
+<table class="table table-sm table-primary">
+    <thead class="bg-warning">
+        <tr>
+            <th>
+                Insurance Number
+                @*@Html.DisplayNameFor(model => model.InsuranceNumber)*@
+            </th>
+            <th>
+                Details
+                @*@Html.DisplayNameFor(model => model.Details)*@
+            </th>
+            <th>
+                Issued
+                @*@Html.DisplayNameFor(model => model.Issued)*@
+            </th>
+            <th>
+                Renewed
+                @*@Html.DisplayNameFor(model => model.renewed)*@
+            </th>
+            <th>
+                InsuranceProvider
+                @*@Html.DisplayNameFor(model => model.InsuranceProvider)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InsuranceNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Issued)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.renewed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InsuranceProvider.ProviderName)
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.InsuranceId">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.InsuranceId">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.InsuranceId">Delete</a>*@
+
+                    <a class="btn btn-outline-success btn-rounded btn-sm my-0" asp-action="Edit" asp-route-id="@item.InsuranceId">Edit</a> |
+                    <a class="btn btn-outline-info btn-rounded btn-sm my-0" asp-action="Details" asp-route-id="@item.InsuranceId">Details</a> |
+                    <a class="btn btn-outline-danger btn-rounded btn-sm my-0" asp-action="Delete" asp-route-id="@item.InsuranceId">Delete</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

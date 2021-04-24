@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] -ESCOM FLEET MANAGEMENT</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="bg-success">
+    <header>
+        @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">*@
+        @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar navbar-dark bg-success border-bottom box-shadow mb-3">*@
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-info border-bottom box-shadow mb-3">
+            <div class="container">
+                @*<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><b class="badge-warning">ESCOM FLEET</b></a>*@
+                <img src="~/logo.png" class="img-center" height="80" width="80" />
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <b class="btn-xxl btn-outline-warning  bg-dark   btn-xl my-0"> FLEET MANAGEMENT SYSTEM</b></a>
+                @*<img src="~/logo.png" class="img-center" height="50" width="50" />*@
+                @*@Html.ActionLink("ESCOM FLEET", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        @*<li class="nav-item">*@
+                        
+                        
+                        <li class="nav-item">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="FleetCustodians" asp-action="Index">Custodians</a>
+
+                        @*</li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Groundeds" asp-action="Index">Grounded</a>
+                        </li>*@          
+
+                        @*</li>*@
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 -ESCOM FLEET MANAGEMENT - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

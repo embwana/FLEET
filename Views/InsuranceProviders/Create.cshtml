@@ -1,0 +1,95 @@
+﻿@model FLEET.Models.InsuranceProvider
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+@*<h1>Create</h1>
+
+    <h4>InsuranceProvider</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="InsuranceProviderId" class="control-label"></label>
+                    <input asp-for="InsuranceProviderId" class="form-control" />
+                    <span asp-validation-for="InsuranceProviderId" class="text-danger"></span>
+                </div>*@
+
+<h2 class="badge-danger">NEW INSURANCE PROVIDER</h2>
+<div>
+    <a asp-action="Index" class="btn btn-outline-warning btn-rounded btn-sm my-0">Back to List</a>
+</div>
+
+@*<div>
+        <a asp-action="Index" class="btn btn-outline-success btn-rounded btn-lg my-0">Back to List</a>
+    </div>*@
+@*<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group row">
+        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-sm">Insurance ProviderID</label>
+        <div class="col-sm-10">
+            <input asp-for="InsuranceProviderId" class="form-control form-control-sm" id="colFormLabel" placeholder="Insurance ProviderID">
+            <span asp-validation-for="InsuranceProviderId" class="text-danger"></span>
+        </div>
+    </div>*@
+
+    @*<div class="form-group">
+            <label asp-for="ProviderName" class="control-label"></label>
+            <input asp-for="ProviderName" class="form-control" />
+            <span asp-validation-for="ProviderName" class="text-danger"></span>
+        </div>*@
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-sm"> Provider Name</label>
+            <div class="col-sm-10">
+                <input asp-for="ProviderName" class="form-control form-control-sm" id="colFormLabel" placeholder="Provider Name">
+                <span asp-validation-for="ProviderName" class="text-danger"></span>
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                <label asp-for="ServiceOffered" class="control-label"></label>
+                <input asp-for="ServiceOffered" class="form-control" />
+                <span asp-validation-for="ServiceOffered" class="text-danger"></span>
+            </div>*@
+
+        <div class="form-group row">
+            <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-sm">Service Offered</label>
+            <div class="col-sm-10">
+                <input asp-for="ServiceOffered" class="form-control form-control-sm" id="colFormLabel" placeholder="Service Offered">
+                <span asp-validation-for="ServiceOffered" class="text-danger"></span>
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                <label asp-for="EstablishedYear" class="control-label"></label>
+                <input asp-for="EstablishedYear" class="form-control" />
+                <span asp-validation-for="EstablishedYear" class="text-danger"></span>
+            </div>*@
+
+        <div class="form-group row">
+            <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-sm">Established Year</label>
+            <div class="col-sm-10">
+                <input asp-for="EstablishedYear" class="form-control form-control-sm" id="colFormLabel" placeholder="Established Year">
+                <span asp-validation-for="EstablishedYear" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+    @*</div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>*@
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

@@ -1,0 +1,83 @@
+﻿@*@model IEnumerable<FLEET.Models.Grounded>*@
+@model PaginatedList<FLEET.Models.Grounded>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="badge-secondary">New GROUNDED FLEET</h1>
+<p>
+    <a asp-action="Create" class="bg-white btn-outline-dark btn-sm my-0">Enter New Grounded Fleet</a>
+    @*<a asp-action="Create">Create New</a>*@
+</p>
+@*<table class="table">
+    <thead>*@
+<table class="table table-sm table-dark">
+    <thead class="bg-warning">
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.NumberPlate)*@
+                NumberPlate
+                
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Department)*@
+                Department
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Station)*@
+                Station
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Remarks)*@
+                Remarks
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberPlate.NumberPlate)
+               
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.NumberPlate.Mileage)*@
+                @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Station.StationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remarks)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.GroundedId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.GroundedId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.GroundedId">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

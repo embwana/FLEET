@@ -1,0 +1,100 @@
+﻿@*@model IEnumerable<EscomFleet.Models.Licence>*@
+@model PaginatedList<FLEET.Models.Licence>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h4 class="text-center text-uppercase">List of Licences</h4>
+
+<p>
+    <a asp-action="New" class="btn btn-sm btn-primary rounded-0 text-uppercase"><i class="fas fa-plus-circle"></i> Add New</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
+@*<table class="table table-bordered">
+    <thead>*@
+<table class="table table-warning table-hover table-sm">
+    @*<div class="jumbotron modal-content "></div>*@
+    <thead class="thead-dark">
+        <tr>
+            @*<th>@Html.DisplayNameFor(model => model.EmployeeNumber)</th>*@
+            <th>EmployeeNumber</th>
+            @*<th>@Html.DisplayNameFor(model => model.Email)</th>*@
+            <th>Email</th>
+            @*<th>@Html.DisplayNameFor(model => model.EmployeeName)</th>*@
+            <th>EmployeeName</th>
+            @*<th>@Html.DisplayNameFor(model => model.LicenceNumber)</th>*@
+            <th>LicenceNumber</th>
+            @*<th>@Html.DisplayNameFor(model => model.IssuedDate)</th>*@
+            <th>IssuedDate</th>
+            @*<th>@Html.DisplayNameFor(model => model.ExpiredDate)</th>*@
+            <th>ExpiredDate</th>
+            @*<th>@Html.DisplayNameFor(model => model.RenewedDate)</th>*@
+            <th>RenewedDate</th>
+            @*<th>@Html.DisplayNameFor(model => model.Department)</th>*@
+            <th>Department</th>
+            @*<th>@Html.DisplayNameFor(model => model.ProfilePicture)</th>*@
+            <th>ProfilePicture</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var licence in Model)
+        {
+            <tr>
+
+                <td>@licence.EmployeeNumber</td>
+                <td>@licence.Email</td>
+                <td>@licence.EmployeeName</td>
+                <td>@licence.LicenceNumber</td>
+                <td>@licence.IssuedDate</td>
+                <td>@licence.ExpiredDate</td>
+                <td>@licence.RenewedDate</td>
+                <td>@licence.Department</td>
+                <td>
+                    <img src="~/images/@licence.ProfilePicture"
+                         class="img-thumbnail"
+                         height="100" width="50"
+                         asp-append-version="true" />
+
+                    @*<img src="~/images/@licence.ProfilePicture"
+                        class="rounded-circle"
+                        class="img-thumbnail"
+                        height="80" width="60"
+                        asp-append-version="true" />*@
+
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

@@ -1,0 +1,81 @@
+﻿@*@model IEnumerable<FLEET.Models.Department>*@
+@model PaginatedList<FLEET.Models.Department>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="badge-secondary text-warning ">LIST OF DEPARTMENTS</h1>
+
+<p>
+    <a asp-action="Create" class="bg-white btn-outline-dark btn-sm my-0">Create A Department</a>
+    @*<a asp-action="Create">Create New</a>*@
+</p>
+@*<p>
+    <a asp-action="Create" class="btn btn-sm btn-primary rounded-0 text-uppercase"><i class="fas fa-plus-circle"></i> Add New COF</a>
+</p>*@
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Department Name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"] " placeholder="Search" />
+            <input type="submit" value="Search" class="bg-dark btn btn-outline-warning btn-sm my-0" /> |
+            @*<a asp-action="Index">Back to Full List</a>*@
+        </p>
+    </div>
+</form>
+<table class="table table-sm table-warning">
+    <thead class="bg-warning">
+        <tr>
+            <th>
+                DepartmentName
+                @*@Html.DisplayNameFor(model => model.DepartmentName)*@
+            </th>
+            <th>
+                Comment
+                @*@Html.DisplayNameFor(model => model.Comment)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.DepartmentId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.DepartmentId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.DepartmentId">Delete</a>*@
+                    <a class="btn btn-outline-success btn-rounded btn-sm my-0" asp-action="Edit" asp-route-id="@item.DepartmentId">Edit</a> |
+                    <a class="btn btn-outline-info btn-rounded btn-sm my-0" asp-action="Details" asp-route-id="@item.DepartmentId">Details</a> |
+                    <a class="btn btn-outline-danger btn-rounded btn-sm my-0" asp-action="Delete" asp-route-id="@item.DepartmentId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class=" bg-light btn btn-outline-warning @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="bg-light btn btn-outline-warning @nextDisabled">
+    Next
+</a>

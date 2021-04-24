@@ -1,0 +1,107 @@
+﻿@*@model IEnumerable<FLEET.Models.FleetCustodian>*@
+@model PaginatedList<FLEET.Models.FleetCustodian>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@*<h1>Index</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+
+<h4 class="text-center text-uppercase">FLEET CUSTODIANS</h4>
+
+<p>
+    <a asp-action="Create" class="btn btn-sm btn-primary rounded-0 text-uppercase"><i class="fas fa-plus-circle"></i> Add New</a>
+</p>
+
+
+@*<table class="table">
+    <thead>*@
+<table class="table table-warning table-hover table-sm">
+    @*<div class="jumbotron modal-content "></div>*@
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                LicenceNumber
+                @*@Html.DisplayNameFor(model => model.LicenceNumber)*@
+            </th>
+            <th>
+                NumberPlate
+                @*@Html.DisplayNameFor(model => model.NumberPlate)*@
+            </th>
+            <th>
+                StationName
+                @*@Html.DisplayNameFor(model => model.StationName)*@
+            </th>
+            <th>
+                DepartmentName
+                @*@Html.DisplayNameFor(model => model.DepartmentName)*@
+            </th>
+            <th>
+                CollectedOn
+                @*@Html.DisplayNameFor(model => model.CollectedOn)*@
+            </th>
+            <th>
+                ReturnedOn
+                @*@Html.DisplayNameFor(model => model.ReturnedOn)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicenceNumber.Department)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberPlate.Mileage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StationName.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentName.Comment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CollectedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReturnedOn)
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.FleetCustodianId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.FleetCustodianId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.FleetCustodianId">Delete</a>*@
+                    <a class="btn btn-outline-success btn-rounded btn-sm my-0" asp-action="Edit" asp-route-id="@item.FleetCategoryId">Edit</a> |
+                    @*<a class="btn btn-outline-info btn-rounded btn-sm my-0" asp-action="Details" asp-route-id="@item.FleetCategoryId">Details</a> |*@
+                    <a class="btn btn-outline-danger btn-rounded btn-sm my-0" asp-action="Delete" asp-route-id="@item.FleetCategoryId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
